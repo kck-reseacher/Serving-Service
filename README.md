@@ -1,2 +1,3 @@
 # mlops-srs (Serving Request Service)
-test
+
+MLOps Serving Pipeline을 개발하는 Repository입니다
