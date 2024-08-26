@@ -1,0 +1,35 @@
+FROM python:3.8.16
+
+ENV AIMODULE_HOME=/root/ai-home \
+    MLOPS_SRS_PATH=/root/ai-module/mlops-srs \
+    AIMODULE_LOG_PATH=/root/ai-log \
+    XAIOPS_LOG_PATH=/root/ai-log/mlops \
+    AIMODULE_SERVER_ENV=dev \
+    AIMODULE_LOGGER_ENV=dev
+
+ENV TZ=Asia/Seoul
+
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+WORKDIR /root
+
+RUN apt-get update && apt-get install -y wget
+
+RUN apt-get install -y curl vim g++ ntp
+
+RUN mkdir ai-home ai-module ai-log
+
+COPY ./ /root/ai-module/mlops-srs
+
+WORKDIR /root/ai-module/mlops-srs/package
+
+RUN pip install -r ./requirements.txt
+
+RUN echo 'alias logs="cd \$AIMODULE_LOG_PATH"' >> ~/.bashrc \
+    && echo 'alias rs="ps -ef | grep request_service | grep -v grep"' >> ~/.bashrc \
+    && echo 'alias module="cd \$AIMODULE_PATH"' >> ~/.bashrc \
+    && echo 'alias ll="ls -al"' >> ~/.bashrc
+
+WORKDIR /root/ai-module/mlops-srs
+
+RUN chmod -R 777 ./*

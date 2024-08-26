@@ -1,0 +1,39 @@
+{
+	"sys_id": 2,
+	"kafka": "10.10.37.81:19092",
+	"postgres": {
+		"host": "MTAuMTAuMzcuODE=",
+		"port": "MTU0MzI=",
+		"database": "cG9zdGdyZXM=",
+		"id": "ZXhlbWFp",
+		"password": "emcoK05FcCluXThZWGsy"
+	},
+	"logpresso":{
+        "host": "MTAuMTAuMzQuMTE=",
+        "port": "MTg4ODg=",
+        "id": "YWlfc3BhcnNl",
+        "password": "YWlhaWFpYWkxQCM="
+    },
+	"mls": {
+		"host": "172.72.0.2",
+		"port": "19000"
+	},
+	"mlc": {
+		"host": "172.72.0.3",
+		"port": "12589"
+	},
+    "nginx": {
+		"host": "172.72.0.4",
+		"port": "17777"
+	},
+	"redis_server": {
+		"ai": {
+			"host": "172.72.0.5",
+			"port": "6379"
+		},
+	    "be": {
+			"host": "10.10.37.81",
+			"port": "16379"
+		}
+    }
+}
